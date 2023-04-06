@@ -1,7 +1,7 @@
 package com.dobysh.taskmanager.model;
 
 public enum Status {
-    PLANED("Запланирована"),
+    PLANNED("Запланирована"),
     IN_PROGRESS("В процессе"),
     COMPLETED("Завершена"),
     CANCELED("Отменена");
@@ -12,7 +12,7 @@ public enum Status {
         this.statusTextDisplay = text;
     }
 
-    public String getGenreTextDisplay() {
+    public String getStatusTextDisplay() {
         return this.statusTextDisplay;
     }
 }

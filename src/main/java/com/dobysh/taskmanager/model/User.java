@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,12 +36,24 @@ public class User
     @Column(name = "email", nullable = false)
     private String email;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @Column(name = "change_password_token")
+    private String changePasswordToken;
+
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "role_id", nullable = false,
             foreignKey = @ForeignKey(name = "FK_USER_ROLES"))
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserTasks> userTasks;
+    @OneToMany
+    @JoinTable(name = "users_tasks",
+            joinColumns = @JoinColumn(name = "user_id"), foreignKey = @ForeignKey(name = "FK_TASKS_USERS"),
+            inverseJoinColumns = @JoinColumn(name = "task_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_TASKS"))
+    private List<Task> tasks;
+
+    @OneToMany
+    @JoinTable(name = "users_projects",
+            joinColumns = @JoinColumn(name = "user_id"), foreignKey = @ForeignKey(name = "FK_PROJECTS_USERS"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_PROJECTS"))
+    private List<Project> projects;
 }
 

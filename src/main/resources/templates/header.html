@@ -1,0 +1,117 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     th:fragment="header">
+    <link href="/css/taskmanager.css" rel="stylesheet" media="screen">
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #282828">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <span class="hstack gap-1 align-items-center line">
+                        <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse">
+                            <i class="bi bi-list text-white"></i>
+                        </a>
+                    </span>
+                    <span class="hstack gap-1 align-items-center line">
+                        <a href="/tasks/planned" class="nav-link">
+                            <i class="bi-house text-white"></i>
+                        </a>
+                    </span>
+                </ul>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end text-center">
+                        <li><a class="dropdown-item" href="/user/profile">Профиль</a></li>
+                        <li><a class="dropdown-item" href="/logout">Выход</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" >
+        <div class="row flex-nowrap ">
+            <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0">
+                <div id="sidebar" class="collapse collapse-horizontal show border-0 " >
+                    <div id="sidebar-nav " class="d-flex flex-column align-items-stretch p-3 align-items-center align-items-sm-start px-3 pt-2 text-white ">
+                        <div style="text-align: center; color: white">
+                            <span class="fs-5 d-none d-sm-inline">Задачи</span>
+                        </div>
+                        <ul class="nav nav-pills flex-column mb-0 align-items-center align-items-sm-start" >
+                            <li class="nav-item">
+                                <a href="/tasks/planned" class="nav-link align-middle px-0">
+                                    <i class="bi bi-building-exclamation text-white"></i>
+                                    <span class="ms-1 d-none d-sm-inline text-white">Запланированные</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tasks/inprogress" class="nav-link px-0 align-middle">
+                                    <i class="bi bi-building text-white"></i>
+                                    <span class="ms-1 d-none d-sm-inline text-white">В процессе</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tasks/completed" class="nav-link px-0 align-middle">
+                                    <i class="bi bi-building-check text-white"></i>
+                                    <span class="ms-1 d-none d-sm-inline text-white">Завершённые</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tasks/canceled" class="nav-link px-0 align-middle">
+                                    <i class="bi bi-building-slash text-white"></i>
+                                    <span class="ms-1 d-none d-sm-inline text-white">Отменённые</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="btn-group">
+                            <div style="text-align: center; color: white">
+                                <span class="fs-5 d-none d-sm-inline">Проекты</span>
+                            </div>
+                            <button type="button" class="btn btn-primary bg-transparent border-0 dropdown-toggle px-1" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            </button>
+                            <button type="button" class="btn btn-primary bg-transparent border-0 bi bi-plus px-1" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-transparent border-0">
+                                <li class="nav-item text-nowrap" th:each="project : ${projects}">
+                                    <a class="align-middle px-0">
+                                        <a class="bi bi-ui-checks text-white"></a>
+                                        <a class="nav-link ms-1 d-none d-sm-inline text-white" th:href="'/projects/' + ${project.getId()}" th:text="${project.getProjectName()}"></a>
+                                        <a class="btn btn-primary bg-transparent border-0 bi bi bi-trash px-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить проект" th:href="'/projects/delete/' + ${project.getId()}"
+                                           onclick="return confirm('Вы действительно хотите удалить проект?')"></a>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content bg-dark border-0">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title border-0" id="addProjectModalLabel">Новый проект</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                        </div>
+                                        <div class="modal-body bg-dark border-0">
+                                                <form class="px-4 py-3 " method="POST" th:action="@{/projects/add}" th:object="${projectForm}">
+                                                    <div class="mb-3">
+                                                        <input type="text" name="projectName"  id="projectName" class="form-control bg-transparent text-white" placeholder="Название проекта" required>
+                                                        <div class="invalid-feedback">Обязательное поле для заполнения</div>
+                                                    </div>
+                                                    <button id="submitButton" type="submit" class="btn btn-danger border-0">Добавить</button>
+                                                    <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Отмена</button>
+                                                </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <main class="col ps-md-2 pt-2">
+                <div class="row justify-content-center align-items-center" >
+                    <div class="col-6" style="color: white" layout:fragment="content">
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</div>

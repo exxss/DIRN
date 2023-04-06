@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body style="background-color: #202020">
+<div layout:fragment="content">
+    <div class="mt-5 text-white ">
+        <div class="row text-white" >
+            <div class="col">
+                <div id="current_date" on></p>
+                    <script type="text/javascript">
+                        const d = new Date();
+
+                        const day = ["Вс", "Пн", "Вт",
+                            "Ср", "Чт", "Пт", "Сб"];
+
+                        const month = ["янв", "февр", "мар", "апр", "мая", "июня",
+                            "июля", "авг", "сент", "окт", "нояб", "дек"];
+
+                        document.write("Сегодня " + day[d.getDay()]+" " +d.getDate()+ " " + month[d.getMonth()]
+                            + " " + d.getFullYear() + " г.");
+                    </script>
+                </div>
+                <!--                <a sec:authorize="isAuthenticated() && (hasRole('USER'))"-->
+            </div>
+        </div>
+        <div>
+            <table class="table text-white border-dark" style="table-layout: fixed">
+                <tbody>
+                <tr th:each="task : ${planedTasks}">
+                    <td>
+                        <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
+                        <br/>
+                        <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
+                        </td>
+                    <td>
+                        <div style="float: right">
+                            <a class="btn btn-primary bg-transparent border-0 bi bi-arrow-right"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="Перейти к выполнению"
+                               th:href="'/tasks/toInProgress/' + ${task.id}"></a>
+                            <a class="btn btn-primary bg-transparent border-0 bi bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить задачу" th:href="'/tasks/delete/' + ${task.id}"
+                               onclick="return confirm('Вы действительно хотите удалить задачу?')"></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary border-0 bg-transparent" type="button" id="dropdownMenuClickable" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                Добавить задачу
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark text-white" aria-labelledby="dropdownMenuClickable">
+                <form class="px-4 py-3 bg-transparent needs-validation" method="POST" th:action="@{/tasks/add}" th:object="${taskForm}">
+                    <div class="mb-3">
+                        <input type="text" name="taskTitle"  id="taskTitle" class="form-control bg-transparent text-white" placeholder="Название задачи" required >
+                    </div>
+                    <div class="mb-3">
+                        <input name="description" type="text" class="form-control bg-transparent border-dark text-white" id="description" placeholder="Описание">
+                    </div>
+                    <button type="submit" class="btn btn-danger border-0">Добавить</button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,15 +1,16 @@
 package com.dobysh.taskmanager.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class ProjectDTO extends GenericDTO {
     private String projectName;
-    private Set<Long> tasks;
+    private Set<Long> tasksIds;
+    private Long userId;
 }

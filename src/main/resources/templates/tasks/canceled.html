@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: #202020">
+<div layout:fragment="content">
+
+    <div class="mt-5 text-white ">
+        <div class="row text-white" >
+            <div class="col">
+                <div id="current_date"></p>
+                    <script type="text/javascript">
+                    const d = new Date();
+
+                    const day = ["Вс", "Пн", "Вт",
+                        "Ср", "Чт", "Пт", "Сб"];
+
+                    const month = ["янв", "февр", "мар", "апр", "мая", "июня",
+                        "июля", "авг", "сент", "окт", "нояб", "дек"];
+
+                    document.write("Сегодня " + day[d.getDay()]+" " +d.getDate()+ " " + month[d.getMonth()]
+                        + " " + d.getFullYear() + " г.");
+                   </script>
+                </div>
+                <!--                <a sec:authorize="isAuthenticated() && (hasRole('USER'))"-->
+            </div>
+        </div>
+        <div>
+            <table class="table text-white border-dark">
+                <tbody>
+                <tr th:each="task : ${canceledTasks}">
+                    <td>
+                        <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
+                        <br/>
+                        <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
+                    </td>
+                    <td>
+                        <div style="float: right">
+                            <a class="btn btn-primary bg-transparent border-0 bi bi bi-arrow-counterclockwise" data-bs-toggle="tooltip" data-bs-placement="top" title="Вернуть в запланированные" th:href="'/tasks/returnToPlanned/' + ${task.id}">
+
+                            </a>
+                            <a class="btn btn-primary bg-transparent border-0 bi bi-trash"  data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить задачу" th:href="'/films/delete/' + ${task.id}"
+                               onclick="return confirm('Вы действительно хотите удалить задачу?')"></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

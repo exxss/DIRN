@@ -35,8 +35,8 @@ public abstract class GenericMapper<E extends GenericModel,D extends GenericDTO>
     }
 
     @Override
-    public List<E> toEntities(List<D> dtos) {
-        return dtos.stream().map(this::toEntity).toList();
+    public List<E> toEntities(List<D> DTOs) {
+        return DTOs.stream().map(this::toEntity).toList();
     }
 
     @Override

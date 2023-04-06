@@ -20,10 +20,16 @@ public class Project extends GenericModel {
         @Column(name = "project_name", nullable = false)
         private String projectName;
 
-        @ManyToMany
+        @OneToMany
         @JoinTable(name = "tasks_projects",
                 joinColumns = @JoinColumn(name = "project_id"), foreignKey = @ForeignKey(name = "FK_PROJECTS_TASKS"),
                 inverseJoinColumns = @JoinColumn(name = "task_id"), inverseForeignKey = @ForeignKey(name = "FK_TASKS_PROJECTS"))
         private Set<Task> tasks;
+
+        @ManyToOne
+        @JoinTable(name = "users_projects",
+                joinColumns = @JoinColumn(name = "project_id"), foreignKey = @ForeignKey(name = "FK_PROJECTS_USERS"),
+                inverseJoinColumns = @JoinColumn(name = "user_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_PROJECTS"))
+        private User user;
 }
 

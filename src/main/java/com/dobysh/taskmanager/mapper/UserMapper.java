@@ -2,52 +2,51 @@ package com.dobysh.taskmanager.mapper;
 
 import com.dobysh.taskmanager.dto.UserDTO;
 import com.dobysh.taskmanager.model.GenericModel;
+import com.dobysh.taskmanager.model.Task;
 import com.dobysh.taskmanager.model.User;
-import com.dobysh.taskmanager.repository.UserTasksRepository;
+import com.dobysh.taskmanager.repository.TaskRepository;
 import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
 public class UserMapper extends GenericMapper<User, UserDTO> {
 
     private final ModelMapper modelMapper;
-    private final UserTasksRepository userTasksRepository;
+    private final TaskRepository taskRepository;
 
-    protected UserMapper(ModelMapper modelMapper, UserTasksRepository userTasksRepository) {
+    protected UserMapper(ModelMapper modelMapper, TaskRepository taskRepository) {
         super(modelMapper, User.class, UserDTO.class);
         this.modelMapper = modelMapper;
-        this.userTasksRepository = userTasksRepository;
+        this.taskRepository = taskRepository;
     }
 
     @PostConstruct
     protected void setupMapper() {
         modelMapper.createTypeMap(User.class, UserDTO.class)
-                .addMappings(m -> m.skip(UserDTO::setTasks)).setPostConverter(toDtoConverter());
+                .addMappings(m -> m.skip(UserDTO::setTasksIds)).setPostConverter(toDtoConverter());
         modelMapper.createTypeMap(UserDTO.class, User.class)
-                .addMappings(m -> m.skip(User::setUserTasks)).setPostConverter(toEntityConverter());
+                .addMappings(m -> m.skip(User::setTasks)).setPostConverter(toEntityConverter());
     }
 
     @Override
     protected void mapSpecificFields(UserDTO source, User destination) {
-        if (!Objects.isNull(source.getTasks())) {
-            destination.setUserTasks(new HashSet<>(userTasksRepository.findAllById(source.getTasks())));
+        if (!Objects.isNull(source.getTasksIds())) {
+            destination.setTasks(new ArrayList<>(taskRepository.findAllById(source.getTasksIds())) {
+            });
         }
         else {
-            destination.setUserTasks(Collections.emptySet());
+            destination.setTasks(Collections.emptyList());
         }
     }
 
     @Override
     protected void mapSpecificFields(User source, UserDTO destination) {
-        destination.setTasks(Objects.isNull(source) || Objects.isNull(source.getUserTasks()) ? null
-                : source.getUserTasks().stream()
+        destination.setTasksIds(Objects.isNull(source) || Objects.isNull(source.getTasks()) ? null
+                : source.getTasks().stream()
                 .map(GenericModel::getId)
                 .collect(Collectors.toSet()));
     }
@@ -55,9 +54,9 @@ public class UserMapper extends GenericMapper<User, UserDTO> {
 
     @Override
     protected Set<Long> getIds(User entity) {
-        return Objects.isNull(entity) || Objects.isNull(entity.getUserTasks())
+        return Objects.isNull(entity) || Objects.isNull(entity.getTasks())
                 ? null
-                : entity.getUserTasks().stream()
+                : entity.getTasks().stream()
                 .map(GenericModel::getId)
                 .collect(Collectors.toSet());
     }

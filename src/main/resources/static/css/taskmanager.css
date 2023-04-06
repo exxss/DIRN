@@ -1,0 +1,15 @@
+#sidebar-nav {
+    width: 160px;
+}
+.nav-link {
+    color: whitesmoke !important;
+}
+.text-center {
+    left: 150px;
+}
+.dropdown-menu {
+    width:100%;
+}
+.nav > li.dropdown.open { position: static; }
+.nav > li.dropdown.open .dropdown-menu {display:table; width: 100%; text-align: center; left:0; right:0; }
+.dropdown-menu>li { display: inline-block; }

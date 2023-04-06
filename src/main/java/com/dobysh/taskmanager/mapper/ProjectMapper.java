@@ -5,9 +5,11 @@ import com.dobysh.taskmanager.model.GenericModel;
 import com.dobysh.taskmanager.model.Project;
 import com.dobysh.taskmanager.repository.TaskRepository;
 
+import com.dobysh.taskmanager.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+import org.webjars.NotFoundException;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,34 +22,37 @@ public class ProjectMapper extends GenericMapper<Project, ProjectDTO> {
 
     private final ModelMapper modelMapper;
     private final TaskRepository taskRepository;
+    private final UserRepository userRepository;
 
-    protected ProjectMapper(ModelMapper modelMapper, TaskRepository taskRepository) {
+    protected ProjectMapper(ModelMapper modelMapper, TaskRepository taskRepository, UserRepository userRepository) {
         super(modelMapper, Project.class, ProjectDTO.class);
         this.modelMapper = modelMapper;
         this.taskRepository = taskRepository;
+        this.userRepository = userRepository;
     }
 
     @PostConstruct
     protected void setupMapper() {
         modelMapper.createTypeMap(Project.class, ProjectDTO.class)
-                .addMappings(m -> m.skip(ProjectDTO::setTasks)).setPostConverter(toDtoConverter());
+                .addMappings(m -> m.skip(ProjectDTO::setTasksIds)).setPostConverter(toDtoConverter());
         modelMapper.createTypeMap(ProjectDTO.class, Project.class)
                 .addMappings(m -> m.skip(Project::setTasks)).setPostConverter(toEntityConverter());
     }
 
     @Override
     protected void mapSpecificFields(ProjectDTO source, Project destination) {
-        if (!Objects.isNull(source.getTasks())) {
-            destination.setTasks(new HashSet<>(taskRepository.findAllById(source.getTasks())));
+        if (!Objects.isNull(source.getTasksIds())) {
+            destination.setTasks(new HashSet<>(taskRepository.findAllById(source.getTasksIds())));
         }
         else {
             destination.setTasks(Collections.emptySet());
         }
+        destination.setUser(userRepository.findById(source.getUserId()).orElseThrow(() -> new NotFoundException("Пользователь не найден")));
     }
 
     @Override
     protected void mapSpecificFields(Project source, ProjectDTO destination) {
-        destination.setTasks(Objects.isNull(source) || Objects.isNull(source.getTasks()) ? null
+        destination.setTasksIds(Objects.isNull(source) || Objects.isNull(source.getTasks()) ? null
                 : source.getTasks().stream()
                 .map(GenericModel::getId)
                 .collect(Collectors.toSet()));
