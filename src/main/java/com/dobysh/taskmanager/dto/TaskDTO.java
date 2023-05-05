@@ -3,9 +3,6 @@ package com.dobysh.taskmanager.dto;
 import com.dobysh.taskmanager.model.Status;
 import lombok.*;
 
-import java.util.Date;
-import java.util.Set;
-
 @Getter
 @Setter
 @NoArgsConstructor

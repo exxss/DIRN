@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Запланированные</title>
 
 </head>
 <body style="background-color: #202020">
@@ -38,7 +37,7 @@
                         <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
                         <br/>
                         <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
-                        </td>
+                    </td>
                     <td>
                         <div style="float: right">
                             <a class="btn btn-primary bg-transparent border-0 bi bi-arrow-right"
@@ -48,6 +47,8 @@
                                th:href="'/tasks/toInProgress/' + ${task.id}"></a>
                             <a class="btn btn-primary bg-transparent border-0 bi bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить задачу" th:href="'/tasks/delete/' + ${task.id}"
                                onclick="return confirm('Вы действительно хотите удалить задачу?')"></a>
+                            <a th:href="'/tasks/update/' + ${task.id}" class="btn btn-primary bg-transparent border-0   bi bi-pencil-square px-0">
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -66,6 +67,17 @@
                     </div>
                     <div class="mb-3">
                         <input name="description" type="text" class="form-control bg-transparent border-dark text-white" id="description" placeholder="Описание">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select bg-transparent border-dark text-white" name="projectId" id="projectId" >
+                            <option class="bg-dark" selected th:value="${null}">Выберете проект</option>
+                            <option class="bg-dark"
+                                    th:each="project : ${projects}"
+                                    th:value="${project.getId()}"
+                                    th:text="${project.getProjectName()}">
+
+                            </option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-danger border-0">Добавить</button>
                 </form>

@@ -1,23 +1,19 @@
 package com.dobysh.taskmanager.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.OrderBy;
+
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @SequenceGenerator(name = "default_gen", sequenceName = "users_seq", allocationSize = 1)
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class User
         extends GenericModel {
 
@@ -45,12 +41,14 @@ public class User
     private Role role;
 
     @OneToMany
+    @OrderBy(clause = "id DESC")
     @JoinTable(name = "users_tasks",
             joinColumns = @JoinColumn(name = "user_id"), foreignKey = @ForeignKey(name = "FK_TASKS_USERS"),
             inverseJoinColumns = @JoinColumn(name = "task_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_TASKS"))
     private List<Task> tasks;
 
     @OneToMany
+    @OrderBy(clause = "id DESC")
     @JoinTable(name = "users_projects",
             joinColumns = @JoinColumn(name = "user_id"), foreignKey = @ForeignKey(name = "FK_PROJECTS_USERS"),
             inverseJoinColumns = @JoinColumn(name = "project_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_PROJECTS"))

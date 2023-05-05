@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
 <head>
     <title>Ошибка</title>
+    <script src="/webjars/bootstrap/5.0.2/dist/js/bootstrap.min.js"></script>
+    <link href="/css/login.css" rel="stylesheet" media="screen">
+    <link href="/webjars/bootstrap/5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
 </head>
-<body STYLE="background: #202020">
-<div layout:fragment="content">
-    <h3 class="mt-3 mb-3">Случилась непредвиденная ситуация. Мы уже работаем над этой проблемой.</h3>
-    <p th:if="${exception != null}" th:text="${exception}"></p>
-    <div class="col">
-        <a href="/tasks/planned"
-           class="btn btn-secondary bg-transparent"
-           role="button"
-           aria-disabled="true">На главную</a>
-        <a class="btn btn-secondary bg-transparent"
-           role="button"
-           onclick="window.history.back()"
-           aria-disabled="true">Назад</a>
+<body>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="mt-3 mb-3">Случилась непредвиденная ситуация. Мы уже работаем над этой проблемой.</h3>
+                        <p th:if="${exception != null}" th:text="${exception}"></p>
+                        <div class="col">
+                            <a sec:authorize="hasRole('ADMIN')"
+                               href="/users/list"
+                               class="btn btn-secondary bg-transparent"
+                               role="button"
+                               aria-disabled="true">На главную</a>
+                            <a sec:authorize="hasRole('USER')"
+                               href="/tasks/planned"
+                               class="btn btn-secondary bg-transparent"
+                               role="button"
+                               aria-disabled="true">На главную</a>
+                            <a class="btn btn-secondary bg-transparent"
+                               role="button"
+                               onclick="window.history.back()"
+                               aria-disabled="true">Назад</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 </body>
 </html>

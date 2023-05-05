@@ -1,8 +1,8 @@
 package com.dobysh.taskmanager.constants;
 
 public interface Errors {
-    class Books {
-        public static final String BOOK_DELETE_ERROR = "Книга не может быть удалена, так как у нее есть активные аренды";
+    class Tasks {
+        public static final String TASK_FORBIDDEN_ERROR = "У вас нет прав просматривать информацию о задаче";
     }
 
     class Projects{

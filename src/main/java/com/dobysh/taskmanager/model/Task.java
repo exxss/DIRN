@@ -3,20 +3,16 @@ package com.dobysh.taskmanager.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.util.Set;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
 
 @Entity
 @Table(name = "tasks")
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @SequenceGenerator(name = "default_gen", sequenceName = "tasks_seq", allocationSize = 1)
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 @ToString
 public class Task extends GenericModel {
 

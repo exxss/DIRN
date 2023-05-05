@@ -1,7 +1,6 @@
 package com.dobysh.taskmanager.service;
 
 import com.dobysh.taskmanager.dto.GenericDTO;
-import com.dobysh.taskmanager.exception.MyDeleteException;
 import com.dobysh.taskmanager.mapper.GenericMapper;
 import com.dobysh.taskmanager.model.GenericModel;
 import com.dobysh.taskmanager.repository.GenericRepository;
@@ -42,11 +41,10 @@ public abstract class GenericService<T extends GenericModel, N extends GenericDT
     }
 
     public N update(N object) {
-        log.info(object.toString());
         return mapper.toDto(repository.save(mapper.toEntity(object)));
     }
 
-    public void delete(final Long id) throws MyDeleteException {
+    public void delete(final Long id) {
         repository.deleteById(id);
     }
 

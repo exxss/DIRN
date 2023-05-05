@@ -60,7 +60,7 @@ public class WebSecurityConfig {
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/tasks/planned",true)
+                        .defaultSuccessUrl("/",true)
                         .permitAll()
                 )
                 .logout((logout) -> logout

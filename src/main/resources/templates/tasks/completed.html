@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Выполненные</title>
 </head>
 <body style="background-color: #202020">
 <div layout:fragment="content">
@@ -42,7 +41,7 @@
                     <td>
                     <td>
                         <div style="float: right">
-                            <a class="btn btn-primary bg-transparent border-0 bi bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить задачу" th:href="'/films/delete/' + ${task.id}"
+                            <a class="btn btn-primary bg-transparent border-0 bi bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить задачу" th:href="'/tasks/delete/' + ${task.id}"
                                onclick="return confirm('Вы действительно хотите удалить задачу?')"></a>
                         </div>
                     </td>

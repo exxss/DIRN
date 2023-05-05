@@ -1,7 +1,6 @@
 package com.dobysh.taskmanager.mapper;
 
 import com.dobysh.taskmanager.dto.TaskDTO;
-import com.dobysh.taskmanager.model.GenericModel;
 import com.dobysh.taskmanager.model.Task;
 import com.dobysh.taskmanager.repository.ProjectRepository;
 import com.dobysh.taskmanager.repository.UserRepository;
@@ -10,9 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.webjars.NotFoundException;
 
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Component
 public class TaskMapper extends
@@ -42,13 +39,17 @@ public class TaskMapper extends
 
     @Override
     protected void mapSpecificFields(TaskDTO source, Task destination) {
-//        destination.setProject(projectRepository.findById(source.getProjectId()).orElseThrow(() -> new NotFoundException("Проект не найден")));
+        if(source.getProjectId() != null) {
+            destination.setProject(projectRepository.findById(source.getProjectId()).orElseThrow(() -> new NotFoundException("Проект не найден")));
+        }
         destination.setUser(userRepository.findById(source.getUserId()).orElseThrow(() -> new NotFoundException("Пользователь не найден")));
     }
 
     @Override
     protected void mapSpecificFields(Task source, TaskDTO destination) {
-//        destination.setProjectId(source.getProject().getId());
+        if (source.getProject() != null) {
+        destination.setProjectId(source.getProject().getId());
+        }
         destination.setUserId(source.getUser().getId());
     }
 

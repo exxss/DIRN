@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Проект</title>
 </head>
 <body style="background-color: #202020">
 <div layout:fragment="content">
@@ -40,47 +39,24 @@
                     <td>
                         <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
                         <br/>
+                        <a th:text="${task.getStatus().getStatusTextDisplay()}"></a>
+                        <br/>
                         <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
                         <br/>
-                        <a style="font-size: 25px" th:text="${task.getStatus().getStatusTextDisplay()}"></a>
                     </td>
                     <td>
                         <div style="float: right">
                             <a class="btn btn-primary bg-transparent border-0 bi bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить задачу" th:href="'/tasks/delete/' + ${task.id}"
                                onclick="return confirm('Вы действительно хотите удалить задачу?')"></a>
-                        </div>
-                        <div th:if="${task.getStatus().getStatusTextDisplay().equalsIgnoreCase('В процессе')
-                        || task.getStatus().getStatusTextDisplay().equalsIgnoreCase('Запланирована')}" style="float: right">
-                            <button type="button" class="btn btn-primary bg-transparent border-0 bi bi-pencil-square px-0" data-bs-toggle="modal" data-bs-target="#editTaskModal">
-                            </button>
-                        </div>
-                        <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content bg-dark border-0">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title border-0" id="editTaskModalLabel">Изменить название</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                                    </div>
-                                    <input type="hidden" name="id"
-                                           th:value="${task.getId()}">
-                                    <div class="modal-body bg-dark border-0">
-                                        <form class="px-4 py-3 needs-validation" novalidate style="max-width: 50vw" method="POST" th:action="@{/tasks/update/{id}(id=${task.getId()})}" th:object="${taskFormEdit}">
-                                            <div class="mb-3">
-                                                <input type="text" th:value="${task.getTaskTitle}" name="taskTitle" class="form-control bg-transparent text-white" placeholder="Введите новое название задачи" required>
-                                                <div class="invalid-feedback">Обязательное поле для заполнения</div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary" onclick="validateForm()">Обновить</button>
-                                            <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Отмена</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            <a th:href="'/tasks/update/' + ${task.id}" class="btn btn-primary bg-transparent border-0   bi bi-pencil-square px-0">
+                            </a>
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+
         <div class="dropdown">
             <button class="btn btn-secondary border-0 bg-transparent" type="button" id="dropdownMenuClickable" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
                 Добавить задачу

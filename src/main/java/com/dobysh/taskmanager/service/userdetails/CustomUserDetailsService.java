@@ -3,6 +3,7 @@ package com.dobysh.taskmanager.service.userdetails;
 import com.dobysh.taskmanager.constants.UserRolesConstants;
 import com.dobysh.taskmanager.model.User;
 import com.dobysh.taskmanager.repository.UserRepository;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

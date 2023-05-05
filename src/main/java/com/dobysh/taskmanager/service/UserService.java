@@ -1,18 +1,12 @@
 package com.dobysh.taskmanager.service;
 
 import com.dobysh.taskmanager.constants.MailConstants;
-import com.dobysh.taskmanager.dto.ProjectDTO;
 import com.dobysh.taskmanager.dto.RoleDTO;
-import com.dobysh.taskmanager.dto.TaskDTO;
 import com.dobysh.taskmanager.dto.UserDTO;
-import com.dobysh.taskmanager.exception.MyDeleteException;
-import com.dobysh.taskmanager.mapper.ProjectMapper;
-import com.dobysh.taskmanager.mapper.TaskMapper;
 import com.dobysh.taskmanager.mapper.UserMapper;
 import com.dobysh.taskmanager.model.User;
 import com.dobysh.taskmanager.repository.UserRepository;
 import com.dobysh.taskmanager.utils.MailUtils;
-import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -24,9 +18,7 @@ import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,18 +27,13 @@ public class UserService extends GenericService<User, UserDTO>{
     private final JavaMailSender javaMailSender;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final TaskMapper taskMapper;
-    private final ProjectMapper projectMapper;
-
     protected UserService(UserRepository userRepository,
                           UserMapper userMapper,
                           BCryptPasswordEncoder bCryptPasswordEncoder,
-                          JavaMailSender javaMailSender, TaskMapper taskMapper, ProjectMapper projectMapper) {
+                          JavaMailSender javaMailSender) {
         super(userRepository, userMapper);
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.javaMailSender = javaMailSender;
-        this.taskMapper = taskMapper;
-        this.projectMapper = projectMapper;
     }
 
     public UserDTO getUserByLogin(final String login) {
@@ -55,10 +42,6 @@ public class UserService extends GenericService<User, UserDTO>{
 
     public UserDTO getUserByEmail(final String email) {
         return mapper.toDto(((UserRepository) repository).findUserByEmail(email));
-    }
-
-    public Boolean checkPassword(String password, UserDetails userDetails) {
-        return bCryptPasswordEncoder.matches(password, userDetails.getPassword());
     }
 
     @Override
@@ -100,12 +83,9 @@ public class UserService extends GenericService<User, UserDTO>{
         return new PageImpl<>(result, pageable, users.getTotalElements());
     }
 
-    public List<String> getUserEmailsWithDelayedRentDate() {
-        return ((UserRepository) repository).getDelayedEmails();
-    }
 
     @Override
-    public void delete(Long id) throws MyDeleteException {
+    public void delete(Long id) {
         User user = repository.findById(id).orElseThrow(
                 () -> new NotFoundException("Пользователя с заданным ID=" + id + " не существует"));
         markAsDeleted(user);
@@ -123,26 +103,6 @@ public class UserService extends GenericService<User, UserDTO>{
         Page<User> objects = repository.findAll(pageable);
         List<UserDTO> result = mapper.toDTOs(objects.getContent());
         return new PageImpl<>(result, pageable, objects.getTotalElements());
-    }
-    public List<TaskDTO> getTasksByUserIdAndStatus(Long id){
-        Optional<User> user = repository.findById(id);
-        if(user.isPresent()) {
-            Hibernate.initialize(user.get().getTasks());
-            return taskMapper.toDTOs(user.get().getTasks());
-        }
-        else {
-            return Collections.emptyList();
-        }
-    }
-    public List<ProjectDTO> getProjectsByUserId(Long id){
-        Optional<User> user = repository.findById(id);
-        if(user.isPresent()) {
-            Hibernate.initialize(user.get().getProjects());
-            return projectMapper.toDTOs(user.get().getProjects());
-        }
-        else {
-            return Collections.emptyList();
-        }
     }
 }
 

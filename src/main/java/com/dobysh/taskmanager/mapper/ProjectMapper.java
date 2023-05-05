@@ -4,7 +4,6 @@ import com.dobysh.taskmanager.dto.ProjectDTO;
 import com.dobysh.taskmanager.model.GenericModel;
 import com.dobysh.taskmanager.model.Project;
 import com.dobysh.taskmanager.repository.TaskRepository;
-
 import com.dobysh.taskmanager.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
@@ -34,9 +33,11 @@ public class ProjectMapper extends GenericMapper<Project, ProjectDTO> {
     @PostConstruct
     protected void setupMapper() {
         modelMapper.createTypeMap(Project.class, ProjectDTO.class)
-                .addMappings(m -> m.skip(ProjectDTO::setTasksIds)).setPostConverter(toDtoConverter());
+                .addMappings(m -> m.skip(ProjectDTO::setTasksIds)).setPostConverter(toDtoConverter())
+                .addMappings(m -> m.skip(ProjectDTO::setUserId)).setPostConverter(toDtoConverter());
         modelMapper.createTypeMap(ProjectDTO.class, Project.class)
-                .addMappings(m -> m.skip(Project::setTasks)).setPostConverter(toEntityConverter());
+                .addMappings(m -> m.skip(Project::setTasks)).setPostConverter(toEntityConverter())
+                .addMappings(m -> m.skip(Project::setUser)).setPostConverter(toEntityConverter());
     }
 
     @Override
@@ -56,7 +57,10 @@ public class ProjectMapper extends GenericMapper<Project, ProjectDTO> {
                 : source.getTasks().stream()
                 .map(GenericModel::getId)
                 .collect(Collectors.toSet()));
+        destination.setUserId(source.getUser().getId());
+
     }
+
 
     @Override
     protected Set<Long> getIds(Project entity) {

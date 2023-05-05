@@ -1,4 +1,3 @@
-//Взято с https://bootstrap-4.ru/docs/5.0/forms/validation/
 function validateForm() {
     'use strict'
     const forms = document.querySelectorAll('.needs-validation');

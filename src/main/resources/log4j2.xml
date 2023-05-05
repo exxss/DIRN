@@ -7,7 +7,7 @@
         </Console>
 
         <RollingFile name="RollingFile"
-                     fileName="./logs/library.log"
+                     fileName="./logs/taskManager.log"
                      filePattern="./logs/$${date:yyyy-MM-dd}/library_%d{dd_MMMM_yyyy}_%i.log.gz">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
