@@ -37,5 +37,4 @@ public class Task extends GenericModel {
             joinColumns = @JoinColumn(name = "task_id"), foreignKey = @ForeignKey(name = "FK_TASKS_USERS"),
             inverseJoinColumns = @JoinColumn(name = "user_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_TASKS"))
     private User user;
-//   TODO Добавить поле окончание задачи
 }

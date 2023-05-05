@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Slf4j
-@Hidden
 public class MVCLoginController {
     
     @GetMapping("/login")
