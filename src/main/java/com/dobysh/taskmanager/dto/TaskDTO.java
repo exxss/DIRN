@@ -3,6 +3,8 @@ package com.dobysh.taskmanager.dto;
 import com.dobysh.taskmanager.model.Status;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,5 +16,6 @@ public class TaskDTO extends GenericDTO {
     private Status status;
     private Long projectId;
     private Long userId;
+    private LocalDateTime expirationDate;
 
 }
