@@ -8,6 +8,7 @@ import com.dobysh.taskmanager.model.Status;
 import com.dobysh.taskmanager.model.Task;
 import com.dobysh.taskmanager.model.User;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -18,14 +19,14 @@ public interface TaskTestData {
             "description1",
             Status.PLANNED,
             1L,
-            1L
+            1L, LocalDateTime.now()
             );
 
     TaskDTO TASK_DTO_2 = new TaskDTO("taskTitle2",
             "description2",
             Status.IN_PROGRESS,
             1L,
-            1L
+            1L,LocalDateTime.now()
     );
 
     List<TaskDTO> TASK_DTO_LIST = Arrays.asList(TASK_DTO_1, TASK_DTO_2);
@@ -34,13 +35,13 @@ public interface TaskTestData {
             "description1",
             Status.PLANNED,
             new Project(),
-            new User()
+            new User(),LocalDateTime.now()
     );
     Task TASK_2 = new Task("taskTitle2",
             "description2",
             Status.PLANNED,
             new Project(),
-            new User()
+            new User(),LocalDateTime.now()
     );
 
     List<Task> TASK_LIST = Arrays.asList(TASK_1, TASK_2);
