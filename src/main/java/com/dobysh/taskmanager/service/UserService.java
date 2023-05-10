@@ -104,5 +104,9 @@ public class UserService extends GenericService<User, UserDTO>{
         List<UserDTO> result = mapper.toDTOs(objects.getContent());
         return new PageImpl<>(result, pageable, objects.getTotalElements());
     }
+    public List<String> getUserEmailsWithDelayedExpirationDate() {
+        return ((UserRepository) repository).getDelayedEmails();
+    }
+
 }
 
