@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -31,7 +32,7 @@ public class MVCTaskControllerTest extends CommonTestMVC{
     @Override
     protected void createObject() throws Exception {
         log.info("Тест по созданию задачи через MVC начат успешно");
-        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L);
+        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L,LocalDateTime.now());
 
         mvc.perform(post("/tasks/add")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -50,7 +51,7 @@ public class MVCTaskControllerTest extends CommonTestMVC{
     @Override
     protected void updateObject() throws Exception {
         log.info("Тест по изменению задачи через MVC начат успешно");
-        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L);
+        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L, LocalDateTime.now());
         taskDTO.setTaskTitle("taskTitleUpdate");
 
         mvc.perform(post("/tasks/update/1")
@@ -71,7 +72,7 @@ public class MVCTaskControllerTest extends CommonTestMVC{
     @Override
     protected void deleteObject() throws Exception {
         log.info("Тест по удалению задачи через MVC начат успешно");
-        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L);
+        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L,LocalDateTime.now());
 
         mvc.perform(post("/tasks/delete/1")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
