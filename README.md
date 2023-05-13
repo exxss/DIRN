@@ -3,8 +3,7 @@ DIRN - Task Manager. Tasks scheduled, in progress, completed, cancelled. Plan yo
 ## Purpose of the application
 Help organize your day
 ## Screenshots
-
-
+![project_screenshots.gif](src%2Fmain%2Fresources%2Fstatic%2Fimg%2Fproject_screenshots.gif)
 ## Getting Started
 In the folder with the application, open cmd and write
 ```

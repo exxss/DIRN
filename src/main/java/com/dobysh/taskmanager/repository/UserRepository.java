@@ -39,6 +39,6 @@ public interface UserRepository extends GenericRepository<User> {
 //                 and bri.returned = false
 //                 and u.is_deleted = false
 //                 """)
-    List<String> getDelayedEmails();
+//    List<String> getDelayedEmails();
 
 }
