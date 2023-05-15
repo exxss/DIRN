@@ -1,41 +1,41 @@
-2023-05-15 23:36:06,999 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2023-05-15 23:36:07,047 INFO o.s.b.StartupInfoLogger [restartedMain] Starting TaskManagerApplication using Java 17.0.2 with PID 8400 (C:\Users\eddie\Desktop\taskmanager\target\classes started by eddie in C:\Users\eddie\Desktop\taskmanager)
-2023-05-15 23:36:07,053 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-05-15 23:36:07,510 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-05-15 23:36:07,511 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-05-15 23:36:08,883 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-15 23:36:08,884 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2023-05-15 23:36:08,944 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.dobysh.taskmanager.repository.ProjectRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-05-15 23:36:08,946 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.dobysh.taskmanager.repository.TaskRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-05-15 23:36:08,948 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.dobysh.taskmanager.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2023-05-15 23:36:08,949 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 59 ms. Found 0 JDBC repository interfaces.
-2023-05-15 23:36:08,968 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2023-05-15 23:36:08,970 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-05-15 23:36:09,013 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 37 ms. Found 3 JPA repository interfaces.
-2023-05-15 23:36:09,896 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-05-15 23:36:09,911 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-05-15 23:36:09,912 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-05-15 23:36:09,913 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.5]
-2023-05-15 23:36:10,032 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-05-15 23:36:10,033 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2521 ms
-2023-05-15 23:36:10,303 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-15 23:36:10,382 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-05-15 23:36:10,620 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [restartedMain] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-05-15 23:36:10,791 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
-2023-05-15 23:36:11,022 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11e45c7
-2023-05-15 23:36:11,024 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
-2023-05-15 23:36:11,097 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-05-15 23:36:11,375 WARN o.h.b.i.InFlightMetadataCollectorImpl [restartedMain] HHH000069: Duplicate generator name default_gen
-2023-05-15 23:36:11,385 WARN o.h.b.i.InFlightMetadataCollectorImpl [restartedMain] HHH000069: Duplicate generator name default_gen
-2023-05-15 23:36:12,816 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-15 23:36:12,833 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-05-15 23:36:14,389 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-05-15 23:36:15,945 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f0712f5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b4674bd, org.springframework.security.web.context.SecurityContextHolderFilter@58c1ca88, org.springframework.security.web.header.HeaderWriterFilter@1c50359b, org.springframework.security.web.authentication.logout.LogoutFilter@2b3bdc1d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@25e452c5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cb7e936, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36867193, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1cb36f6a, org.springframework.security.web.access.ExceptionTranslationFilter@3a5a299c, org.springframework.security.web.access.intercept.AuthorizationFilter@53c6ec64]
-2023-05-15 23:36:16,495 INFO o.q.i.StdSchedulerFactory [restartedMain] Using default implementation for ThreadExecutor
-2023-05-15 23:36:16,513 INFO o.q.c.SchedulerSignalerImpl [restartedMain] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2023-05-15 23:36:16,513 INFO o.q.c.QuartzScheduler [restartedMain] Quartz Scheduler v.2.3.2 created.
-2023-05-15 23:36:16,514 INFO o.q.s.RAMJobStore [restartedMain] RAMJobStore initialized.
-2023-05-15 23:36:16,515 INFO o.q.c.QuartzScheduler [restartedMain] Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+2023-05-15 23:39:11,964 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2023-05-15 23:39:12,016 INFO o.s.b.StartupInfoLogger [restartedMain] Starting TaskManagerApplication using Java 17.0.2 with PID 18336 (C:\Users\eddie\Desktop\taskmanager\target\classes started by eddie in C:\Users\eddie\Desktop\taskmanager)
+2023-05-15 23:39:12,021 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-05-15 23:39:12,505 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-15 23:39:12,507 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-15 23:39:13,819 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-15 23:39:13,821 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-05-15 23:39:13,873 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.dobysh.taskmanager.repository.ProjectRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-05-15 23:39:13,876 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.dobysh.taskmanager.repository.TaskRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-05-15 23:39:13,880 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.dobysh.taskmanager.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-05-15 23:39:13,881 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 51 ms. Found 0 JDBC repository interfaces.
+2023-05-15 23:39:13,895 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2023-05-15 23:39:13,897 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-15 23:39:13,942 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 41 ms. Found 3 JPA repository interfaces.
+2023-05-15 23:39:14,847 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-05-15 23:39:14,861 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-15 23:39:14,862 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-05-15 23:39:14,862 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-05-15 23:39:14,995 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-05-15 23:39:14,996 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2486 ms
+2023-05-15 23:39:15,258 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-15 23:39:15,347 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-05-15 23:39:15,581 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [restartedMain] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-05-15 23:39:15,761 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-05-15 23:39:16,007 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@137adc95
+2023-05-15 23:39:16,009 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-05-15 23:39:16,076 INFO o.h.e.j.d.i.DialectFactoryImpl [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-15 23:39:16,392 WARN o.h.b.i.InFlightMetadataCollectorImpl [restartedMain] HHH000069: Duplicate generator name default_gen
+2023-05-15 23:39:16,400 WARN o.h.b.i.InFlightMetadataCollectorImpl [restartedMain] HHH000069: Duplicate generator name default_gen
+2023-05-15 23:39:17,757 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-15 23:39:17,771 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-15 23:39:19,285 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-15 23:39:20,888 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1d25242e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@51903ecd, org.springframework.security.web.context.SecurityContextHolderFilter@772f9ad2, org.springframework.security.web.header.HeaderWriterFilter@7c74b661, org.springframework.security.web.authentication.logout.LogoutFilter@155db742, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@62331fb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a80c678, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6cfae9b7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e2371ed, org.springframework.security.web.access.ExceptionTranslationFilter@4b3716ce, org.springframework.security.web.access.intercept.AuthorizationFilter@2a3cd8a7]
+2023-05-15 23:39:21,422 INFO o.q.i.StdSchedulerFactory [restartedMain] Using default implementation for ThreadExecutor
+2023-05-15 23:39:21,442 INFO o.q.c.SchedulerSignalerImpl [restartedMain] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-05-15 23:39:21,442 INFO o.q.c.QuartzScheduler [restartedMain] Quartz Scheduler v.2.3.2 created.
+2023-05-15 23:39:21,444 INFO o.q.s.RAMJobStore [restartedMain] RAMJobStore initialized.
+2023-05-15 23:39:21,445 INFO o.q.c.QuartzScheduler [restartedMain] Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -43,38 +43,33 @@
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
-2023-05-15 23:36:16,515 INFO o.q.i.StdSchedulerFactory [restartedMain] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
-2023-05-15 23:36:16,516 INFO o.q.i.StdSchedulerFactory [restartedMain] Quartz scheduler version: 2.3.2
-2023-05-15 23:36:16,516 INFO o.q.c.QuartzScheduler [restartedMain] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@14de8fd9
-2023-05-15 23:36:16,571 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-05-15 23:36:16,602 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-05-15 23:36:16,632 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-05-15 23:36:16,634 INFO o.s.s.q.SchedulerFactoryBean [restartedMain] Starting Quartz Scheduler now
-2023-05-15 23:36:16,635 INFO o.q.c.QuartzScheduler [restartedMain] Scheduler quartzScheduler_$_NON_CLUSTERED started.
-2023-05-15 23:36:16,650 INFO o.s.b.StartupInfoLogger [restartedMain] Started TaskManagerApplication in 10.147 seconds (process running for 12.051)
-2023-05-15 23:36:20,303 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-15 23:36:20,304 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-05-15 23:36:20,306 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2023-05-15 23:36:20,394 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-1] task getAllPlannedTasks
-2023-05-15 23:36:23,239 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-5] task delete
-2023-05-15 23:36:23,325 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-6] task getAllPlannedTasks
-2023-05-15 23:36:24,871 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-9] task delete
-2023-05-15 23:36:24,893 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-10] task getAllPlannedTasks
-2023-05-15 23:36:27,252 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-3] task create
-2023-05-15 23:36:27,253 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-3] TaskDTO(taskTitle=1, description=, status=null, projectId=null, userId=null, expirationDate=)
-2023-05-15 23:36:27,253 INFO c.d.t.s.TaskService [http-nio-8080-exec-3] 
-2023-05-15 23:36:27,253 INFO c.d.t.s.TaskService [http-nio-8080-exec-3] TaskDTO(taskTitle=1, description=, status=PLANNED, projectId=null, userId=4, expirationDate=)
-2023-05-15 23:36:27,293 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-4] task getAllPlannedTasks
-2023-05-15 23:36:31,656 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-8] task create
-2023-05-15 23:36:31,656 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-8] TaskDTO(taskTitle=2, description=, status=null, projectId=null, userId=null, expirationDate=2023-05-16)
-2023-05-15 23:36:31,657 INFO c.d.t.s.TaskService [http-nio-8080-exec-8] 2023-05-16
-2023-05-15 23:36:31,657 INFO c.d.t.s.TaskService [http-nio-8080-exec-8] TaskDTO(taskTitle=2, description=, status=PLANNED, projectId=null, userId=4, expirationDate=2023-05-16)
-2023-05-15 23:36:31,677 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-9] task getAllPlannedTasks
-2023-05-15 23:36:38,542 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED paused.
-2023-05-15 23:36:38,574 INFO o.s.s.q.SchedulerFactoryBean [SpringApplicationShutdownHook] Shutting down Quartz Scheduler
-2023-05-15 23:36:38,574 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
-2023-05-15 23:36:38,574 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED paused.
-2023-05-15 23:36:38,575 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
-2023-05-15 23:36:38,579 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-05-15 23:36:38,587 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2023-05-15 23:36:38,597 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-05-15 23:39:21,445 INFO o.q.i.StdSchedulerFactory [restartedMain] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-05-15 23:39:21,445 INFO o.q.i.StdSchedulerFactory [restartedMain] Quartz scheduler version: 2.3.2
+2023-05-15 23:39:21,445 INFO o.q.c.QuartzScheduler [restartedMain] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@4421374
+2023-05-15 23:39:21,503 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-05-15 23:39:21,546 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-05-15 23:39:21,578 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-15 23:39:21,580 INFO o.s.s.q.SchedulerFactoryBean [restartedMain] Starting Quartz Scheduler now
+2023-05-15 23:39:21,580 INFO o.q.c.QuartzScheduler [restartedMain] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-05-15 23:39:21,593 INFO o.s.b.StartupInfoLogger [restartedMain] Started TaskManagerApplication in 10.133 seconds (process running for 12.082)
+2023-05-15 23:39:34,383 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-15 23:39:34,383 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-05-15 23:39:34,385 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2023-05-15 23:39:34,481 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-2] task getAllPlannedTasks
+2023-05-15 23:39:38,897 INFO c.d.t.M.c.MVCProjectController [http-nio-8080-exec-6] project getOne
+2023-05-15 23:39:48,667 INFO c.d.t.M.c.MVCProjectController [http-nio-8080-exec-10] project addTask
+2023-05-15 23:39:48,667 INFO c.d.t.s.TaskService [http-nio-8080-exec-10] 2023-05-16
+2023-05-15 23:39:48,669 INFO c.d.t.s.TaskService [http-nio-8080-exec-10] TaskDTO(taskTitle=1233, description=, status=PLANNED, projectId=6, userId=4, expirationDate=2023-05-16)
+2023-05-15 23:39:48,785 INFO c.d.t.M.c.MVCTaskController [http-nio-8080-exec-1] task getAllPlannedTasks
+2023-05-15 23:39:52,235 INFO c.d.t.M.c.MVCProjectController [http-nio-8080-exec-5] project getOne
+2023-05-15 23:40:05,323 INFO c.d.t.M.c.MVCProjectController [http-nio-8080-exec-9] project getOne
+2023-05-15 23:40:27,471 INFO c.d.t.M.c.MVCProjectController [http-nio-8080-exec-4] project getOne
+2023-05-15 23:40:53,530 INFO c.d.t.M.c.MVCProjectController [http-nio-8080-exec-7] project getOne
+2023-05-15 23:41:02,368 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-05-15 23:41:02,423 INFO o.s.s.q.SchedulerFactoryBean [SpringApplicationShutdownHook] Shutting down Quartz Scheduler
+2023-05-15 23:41:02,425 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2023-05-15 23:41:02,426 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2023-05-15 23:41:02,426 INFO o.q.c.QuartzScheduler [SpringApplicationShutdownHook] Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2023-05-15 23:41:02,432 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-15 23:41:02,443 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-05-15 23:41:02,456 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

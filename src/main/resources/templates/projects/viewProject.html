@@ -41,8 +41,9 @@
                         <br/>
                         <a th:text="${task.getStatus().getStatusTextDisplay()}"></a>
                         <br/>
-                        <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
+                        <a style="color: gray; font-size: 15px" th:text="${'Сделать до ' + task.getExpirationDate()}"></a>
                         <br/>
+                        <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
                     </td>
                     <td>
                         <div style="float: right">
@@ -68,6 +69,9 @@
                     </div>
                     <div class="mb-3">
                         <input name="description" type="text" class="form-control bg-transparent border-dark text-white" id="description" placeholder="Описание">
+                    </div>
+                    <div class="mb-3">
+                        <input name="expirationDate" min="2017-04-01" max="2025-04-20" type="date" class="form-control bg-transparent border-dark text-white" id="expirationDate" placeholder="Срок выполения">
                     </div>
                     <button type="submit" class="btn btn-danger border-0">Добавить</button>
                 </form>
