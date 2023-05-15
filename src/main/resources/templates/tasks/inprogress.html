@@ -37,6 +37,8 @@
                         <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
                         <br/>
                         <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
+                        <br/>
+                        <a style="color: gray; font-size: 15px" th:text="${'Сделать до ' + task.getExpirationDate()}"></a>
                     </td>
                     <td>
                     <td>

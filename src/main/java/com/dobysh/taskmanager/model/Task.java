@@ -5,8 +5,11 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "tasks")
@@ -40,7 +43,6 @@ public class Task extends GenericModel {
             inverseJoinColumns = @JoinColumn(name = "user_id"), inverseForeignKey = @ForeignKey(name = "FK_USERS_TASKS"))
     private User user;
 
-    @Column(name = "expiration_date", nullable = false)
-    private LocalDateTime expirationDate;
-
+    @Column(name = "expiration_date")
+    private LocalDate expirationDate;
 }

@@ -10,6 +10,7 @@ import com.dobysh.taskmanager.service.userdetails.CustomUserDetails;
 import jakarta.security.auth.message.AuthException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -129,6 +130,7 @@ public class MVCTaskController {
     @PostMapping("/add")
     public String create(@ModelAttribute("taskForm") TaskDTO taskDTO) {
         log.info("task create");
+        log.info(taskDTO.toString());
         taskService.create(taskDTO);
         return "redirect:/tasks/planned";
     }

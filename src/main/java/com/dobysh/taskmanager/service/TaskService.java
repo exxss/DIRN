@@ -9,11 +9,15 @@ import com.dobysh.taskmanager.repository.ProjectRepository;
 import com.dobysh.taskmanager.repository.TaskRepository;
 import com.dobysh.taskmanager.repository.UserRepository;
 import com.dobysh.taskmanager.service.userdetails.CustomUserDetails;
+import com.dobysh.taskmanager.utils.DateFormatter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -70,6 +74,8 @@ public class TaskService extends GenericService<Task, TaskDTO> {
         CustomUserDetails userLoginDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newObject.setUserId(Long.valueOf(userLoginDetails.getUserId()));
         newObject.setStatus(Status.PLANNED);
+        log.info(newObject.getExpirationDate().toString());
+        log.info(newObject.toString());
         return super.create(newObject);
     }
 
@@ -81,6 +87,7 @@ public class TaskService extends GenericService<Task, TaskDTO> {
         object.setStatus(task.getStatus());
         object.setCreatedBy(task.getCreatedBy());
         object.setCreatedWhen(task.getCreatedWhen());
+
         return super.update(object);
     }
 }

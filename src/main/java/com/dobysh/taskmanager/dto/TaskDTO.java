@@ -16,6 +16,6 @@ public class TaskDTO extends GenericDTO {
     private Status status;
     private Long projectId;
     private Long userId;
-    private LocalDateTime expirationDate;
+    private String expirationDate;
 
 }

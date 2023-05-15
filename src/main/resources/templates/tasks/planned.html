@@ -37,6 +37,8 @@
                         <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
                         <br/>
                         <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
+                        <br/>
+                        <a style="color: gray; font-size: 15px" th:text="${'Сделать до ' + task.getExpirationDate()}"></a>
                     </td>
                     <td>
                         <div style="float: right">
@@ -78,6 +80,9 @@
 
                             </option>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <input name="expirationDate" min="2017-04-01" max="2025-04-20" type="date" class="form-control bg-transparent border-dark text-white" id="expirationDate" placeholder="Срок выполения">
                     </div>
                     <button type="submit" class="btn btn-danger border-0">Добавить</button>
                 </form>
