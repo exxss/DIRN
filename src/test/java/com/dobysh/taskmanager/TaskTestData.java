@@ -3,10 +3,7 @@ package com.dobysh.taskmanager;
 import com.dobysh.taskmanager.dto.ProjectDTO;
 import com.dobysh.taskmanager.dto.TaskDTO;
 import com.dobysh.taskmanager.dto.TasksWithProjectDTO;
-import com.dobysh.taskmanager.model.Project;
-import com.dobysh.taskmanager.model.Status;
-import com.dobysh.taskmanager.model.Task;
-import com.dobysh.taskmanager.model.User;
+import com.dobysh.taskmanager.model.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,14 +15,14 @@ import java.util.Set;
 public interface TaskTestData {
     TaskDTO TASK_DTO_1 = new TaskDTO("taskTitle1",
             "description1",
-            Status.PLANNED,
+            Status.PLANNED, Priority.PRIORITY_3,
             1L,
             1L, LocalDate.now().toString()
             );
 
     TaskDTO TASK_DTO_2 = new TaskDTO("taskTitle2",
             "description2",
-            Status.IN_PROGRESS,
+            Status.IN_PROGRESS,Priority.PRIORITY_3,
             1L,
             1L,LocalDateTime.now().toString()
     );
@@ -34,13 +31,13 @@ public interface TaskTestData {
 
     Task TASK_1 = new Task("taskTitle1",
             "description1",
-            Status.PLANNED,
+            Status.PLANNED,Priority.PRIORITY_3,
             new Project(),
             new User(),LocalDate.now()
     );
     Task TASK_2 = new Task("taskTitle2",
             "description2",
-            Status.PLANNED,
+            Status.PLANNED,Priority.PRIORITY_3,
             new Project(),
             new User(),LocalDate.now()
     );

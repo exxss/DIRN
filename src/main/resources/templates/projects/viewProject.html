@@ -38,11 +38,13 @@
                 <tr th:each="task : ${projectsTask}">
                     <td>
                         <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
+
+                        <a style="color: white" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 4')}"><i class="bi bi-flag-fill"></i></a>
+                        <a style="color: green" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 3')}"><i class="bi bi-flag-fill"></i></a>
+                        <a style="color: yellow" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 2')}"><i class="bi bi-flag-fill"></i></a>
+                        <a style="color: red" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 1')}"><i class="bi bi-flag-fill"></i></a>
                         <br/>
-                        <a th:text="${task.getStatus().getStatusTextDisplay()}"></a>
-                        <br/>
-                        <a style="color: gray; font-size: 15px" th:text="${'Сделать до ' + task.getExpirationDate()}"></a>
-                        <br/>
+                        <a style="color: gray; font-size: 15px"th:if="${task.getExpirationDate() != null}" th:text="${'Сделать до ' + task.getExpirationDate()}">  <br/></a>
                         <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
                     </td>
                     <td>
@@ -72,6 +74,13 @@
                     </div>
                     <div class="mb-3">
                         <input name="expirationDate" min="2017-04-01" max="2025-04-20" type="date" class="form-control bg-transparent border-dark text-white" id="expirationDate" placeholder="Срок выполения">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select bg-transparent border-dark text-white" name="priority" id="priority" required>
+                            <option th:selected="${priority.PRIORITY_4}"
+                                    th:each="priority : ${T(com.dobysh.taskmanager.model.Priority).values()}"
+                                    th:value="${priority}" th:text="${priority.getPriorityTextDisplay()}"></option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-danger border-0">Добавить</button>
                 </form>

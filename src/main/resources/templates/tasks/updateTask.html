@@ -45,10 +45,30 @@
           <label for="projectId">Название проекта</label>
         </div>
       </div>
+      <div class="col-md">
+        <div class="form-floating">
+            <input name="expirationDate" th:value="${task.getExpirationDate()}" min="2017-04-01" max="2025-04-20" type="date" class="form-control bg-dark text-white" id="expirationDate" placeholder="Срок выполения">
+          <label for="expirationDate">Срок выполнения</label>
+        </div>
+      </div>
     </div>
     <div class="mt-3 row g-2">
-      <button type="submit" class="btn btn-secondary bg-transparent" onclick="validateForm()">Обновить</button>
-      <button type="button" class="btn btn-secondary bg-transparent" onclick="window.history.back()">Назад</button>
+      <div class="col-md">
+        <div class="form-floating">
+          <select class="form-select bg-dark text-white" name="priority" id="priority" required th:object="${task}" th:field="*{priority}">
+            <option th:value="default">Выберете жанр из списка</option>
+            <option th:selected="${task.getPriority().getPriorityTextDisplay()}"
+                    th:each="priority : ${T(com.dobysh.taskmanager.model.Priority).values()}"
+                    th:value="${priority}" th:text="${priority.getPriorityTextDisplay()}"></option>
+          </select>
+          <label for="priority">Приориет</label>
+          <div class="invalid-feedback">Обязательное поле для заполнения</div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 row g-2">
+      <button type="submit" class="btn btn-secondary bg-dark text-white" onclick="validateForm()">Обновить</button>
+      <button type="button" class="btn btn-secondary bg-dark text-white" onclick="window.history.back()">Назад</button>
     </div>
   </form>
 </div>

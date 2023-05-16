@@ -88,12 +88,12 @@ public class MVCProjectController {
     public String addTask(@PathVariable("projectId") Long projectId,@ModelAttribute("taskForm") TaskDTO taskDTO) {
         log.info("project addTask");
         projectService.addTask(taskService.create(taskDTO).getId(),projectId);
-        return "redirect:/tasks/planned";
+        return "redirect:/projects/" + projectId;
     }
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         log.info("project delete");
         projectService.delete(id);
-        return "redirect:/tasks/planned";
+        return "redirect:/projects/" + id;
     }
 }

@@ -87,7 +87,7 @@ public class TaskService extends GenericService<Task, TaskDTO> {
         object.setStatus(task.getStatus());
         object.setCreatedBy(task.getCreatedBy());
         object.setCreatedWhen(task.getCreatedWhen());
-
+        log.info(object.toString());
         return super.update(object);
     }
 }

@@ -35,10 +35,14 @@
                 <tr th:each="task : ${inProgressTasks}">
                     <td>
                         <a style="font-size: 25px" th:text="${task.getTaskTitle()}"></a>
+
+                        <a style="color: white" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 4')}"><i class="bi bi-flag-fill"></i></a>
+                        <a style="color: green" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 3')}"><i class="bi bi-flag-fill"></i></a>
+                        <a style="color: yellow" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 2')}"><i class="bi bi-flag-fill"></i></a>
+                        <a style="color: red" th:if="${task.getPriority().getPriorityTextDisplay().equals('Приоритет 1')}"><i class="bi bi-flag-fill"></i></a>
                         <br/>
+                        <a style="color: gray; font-size: 15px"th:if="${task.getExpirationDate() != null}" th:text="${'Сделать до ' + task.getExpirationDate()}">  <br/></a>
                         <a style="color: gray; font-size: 15px" th:text="${task.getDescription()}"></a>
-                        <br/>
-                        <a style="color: gray; font-size: 15px" th:text="${'Сделать до ' + task.getExpirationDate()}"></a>
                     </td>
                     <td>
                     <td>

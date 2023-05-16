@@ -31,6 +31,10 @@ public class Task extends GenericModel {
     @Enumerated
     private Status status;
 
+    @Column(name = "priority")
+    @Enumerated
+    private Priority priority;
+
     @ManyToOne
     @JoinTable(name = "tasks_projects",
             joinColumns = @JoinColumn(name = "task_id"), foreignKey = @ForeignKey(name = "FK_TASKS_PROJECTS"),

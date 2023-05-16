@@ -2,6 +2,7 @@ package com.dobysh.taskmanager.MVCcontroller;
 
 import com.dobysh.taskmanager.dto.ProjectDTO;
 import com.dobysh.taskmanager.dto.TaskDTO;
+import com.dobysh.taskmanager.model.Priority;
 import com.dobysh.taskmanager.model.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
@@ -32,7 +33,7 @@ public class MVCTaskControllerTest extends CommonTestMVC{
     @Override
     protected void createObject() throws Exception {
         log.info("Тест по созданию задачи через MVC начат успешно");
-        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L,LocalDateTime.now().toString());
+        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, Priority.PRIORITY_3, 1L, 1L,LocalDateTime.now().toString());
 
         mvc.perform(post("/tasks/add")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -51,7 +52,7 @@ public class MVCTaskControllerTest extends CommonTestMVC{
     @Override
     protected void updateObject() throws Exception {
         log.info("Тест по изменению задачи через MVC начат успешно");
-        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L, LocalDateTime.now().toString());
+        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED,Priority.PRIORITY_3, 1L, 1L, LocalDateTime.now().toString());
         taskDTO.setTaskTitle("taskTitleUpdate");
 
         mvc.perform(post("/tasks/update/1")
@@ -72,7 +73,7 @@ public class MVCTaskControllerTest extends CommonTestMVC{
     @Override
     protected void deleteObject() throws Exception {
         log.info("Тест по удалению задачи через MVC начат успешно");
-        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED, 1L, 1L,LocalDateTime.now().toString());
+        TaskDTO taskDTO = new TaskDTO("taskTitle1", "description1", Status.PLANNED,Priority.PRIORITY_3, 1L, 1L,LocalDateTime.now().toString());
 
         mvc.perform(post("/tasks/delete/1")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
