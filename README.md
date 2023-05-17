@@ -25,7 +25,5 @@ java -jar taskmanager-0.1.war
 - [Nikita Dobysh](https://github.com/exxss)
 
 ## Future plans
-* Add a due date for a task
-* Task Priority
 * Implement search
 * Mobile app
