@@ -7,6 +7,7 @@ import com.dobysh.taskmanager.mapper.UserMapper;
 import com.dobysh.taskmanager.model.User;
 import com.dobysh.taskmanager.repository.UserRepository;
 import com.dobysh.taskmanager.utils.MailUtils;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Log4j2
 public class UserService extends GenericService<User, UserDTO>{
 
     private final JavaMailSender javaMailSender;
@@ -104,9 +106,8 @@ public class UserService extends GenericService<User, UserDTO>{
         List<UserDTO> result = mapper.toDTOs(objects.getContent());
         return new PageImpl<>(result, pageable, objects.getTotalElements());
     }
-//    public List<String> getUserEmailsWithDelayedExpirationDate() {
-//        return ((UserRepository) repository).getDelayedEmails();
-//    }
-
+    public List<String> getUserEmailsWithDelayedExpirationDate() {
+        return ((UserRepository) repository).getDelayedEmails();
+    }
 }
 

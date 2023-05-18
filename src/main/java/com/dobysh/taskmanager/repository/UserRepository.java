@@ -31,14 +31,13 @@ public interface UserRepository extends GenericRepository<User> {
                            String lastName,
                            String login,
                            Pageable pageable);
-//    @Query(nativeQuery = true,
-//            value = """
-//                 select email
-//                 from users u join book_rent_info bri on u.id = bri.user_id
-//                 where bri.return_date >= now()
-//                 and bri.returned = false
-//                 and u.is_deleted = false
-//                 """)
-//    List<String> getDelayedEmails();
+    @Query(nativeQuery = true,
+            value = """
+                select email
+                from  users u left join users_tasks on u.id = users_tasks.user_id
+                              left join tasks t on t.id = users_tasks.task_id
+                where t.expiration_date <= now() and u.is_deleted = false
+                 """)
+    List<String> getDelayedEmails();
 
 }
