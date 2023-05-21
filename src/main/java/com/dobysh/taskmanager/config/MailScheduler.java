@@ -26,16 +26,19 @@ public class MailScheduler {
         this.javaMailSender = javaMailSender;
     }
 
-    @Scheduled(cron = "0 0 6 * ?")
+    @Scheduled(cron = "0 0 6 * * ?")
     public void sendMailsToDebtors() {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         List<String> emails = userService.getUserEmailsWithDelayedExpirationDate();
         if (emails.size() > 0) {
-            mailMessage.setTo(emails.toArray(new String[0]));
-            mailMessage.setSubject("Напоминание о просрочке задач(и)");
-            mailMessage.setText("Добрый день. Вы получили это письмо, так как одна или несколько" +
-                    " из ваших задач просрочена.");
-            javaMailSender.send(mailMessage);
+            for (String email: emails)
+            {
+                mailMessage.setTo(email);
+                mailMessage.setSubject("Напоминание о просрочке задач(и)");
+                mailMessage.setText("Добрый день. Вы получили это письмо, так как одна или несколько" +
+                        " из ваших задач просрочена.");
+                javaMailSender.send(mailMessage);
+            }
         }
     }
 }

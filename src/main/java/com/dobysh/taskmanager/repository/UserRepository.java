@@ -33,7 +33,7 @@ public interface UserRepository extends GenericRepository<User> {
                            Pageable pageable);
     @Query(nativeQuery = true,
             value = """
-                select email
+                select distinct email
                 from  users u left join users_tasks on u.id = users_tasks.user_id
                               left join tasks t on t.id = users_tasks.task_id
                 where t.expiration_date <= now() and u.is_deleted = false
