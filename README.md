@@ -5,16 +5,13 @@ Help organize your day
 ## Screenshots
 ![project_screenshots.gif](src%2Fmain%2Fresources%2Fstatic%2Fimg%2Fproject_screenshots.gif)
 ## Getting Started
+Download and install [Docker](https://www.docker.com/get-started/)
+
 In the folder with the application, open cmd and write
 ```
-mvn package
+docker-compose up
 ```
-Maven generates a runnable jar file called taskmanager-0.1.war inside the target folder. 
 
-Open cmd, then run the jar using:
-```
-java -jar taskmanager-0.1.war
-```
 ## Functional
 * Registration
 * Add/edit/delete task

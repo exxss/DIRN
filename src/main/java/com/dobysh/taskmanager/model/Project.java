@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name = "default_gen", sequenceName = "projects_seq", allocationSize = 1)
+@SequenceGenerator(name = "default_gen", sequenceName = "projects_id_seq", allocationSize = 1)
 public class Project extends GenericModel {
 
         @Column(name = "project_name", nullable = false)

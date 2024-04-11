@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-info
+      author: nikitadb
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: title
+                  value: "User"
+              - column:
+                  name: description
+                  value: "role for users"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: title
+                  value: "Admin"
+              - column:
+                  name: description
+                  value: "role for adm"

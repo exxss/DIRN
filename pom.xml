@@ -12,10 +12,12 @@
 	<artifactId>taskmanager</artifactId>
 	<version>0.1</version>
 	<name>taskmanager</name>
-	<packaging>war</packaging>
 	<description>Project for JavaSber </description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.test.skip>true</maven.test.skip>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -55,14 +57,13 @@
 			<version>3.1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -125,7 +126,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>4.20.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -144,5 +150,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

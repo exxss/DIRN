@@ -1,0 +1,243 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tables
+      author: nikitadb
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: created_when
+                  type: timestamp
+              - column:
+                  name: deleted_by
+                  type: varchar
+              - column:
+                  name: deleted_when
+                  type: timestamp
+              - column:
+                  name: is_deleted
+                  type: boolean
+              - column:
+                  name: title
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: login
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: created_when
+                  type: timestamp
+              - column:
+                  name: deleted_by
+                  type: varchar
+              - column:
+                  name: deleted_when
+                  type: timestamp
+              - column:
+                  name: is_deleted
+                  type: boolean
+              - column:
+                  name: change_password_token
+                  type: varchar
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_USER_ROLES
+                    referencedTableName: roles
+                    referencedColumnNames: id
+        - createTable:
+            tableName: projects
+            columns:
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: created_when
+                  type: timestamp
+              - column:
+                  name: deleted_by
+                  type: varchar
+              - column:
+                  name: deleted_when
+                  type: timestamp
+              - column:
+                  name: is_deleted
+                  type: boolean
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: project_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: created_by
+                  type: varchar
+              - column:
+                  name: created_when
+                  type: timestamp
+              - column:
+                  name: deleted_by
+                  type: varchar
+              - column:
+                  name: deleted_when
+                  type: timestamp
+              - column:
+                  name: is_deleted
+                  type: boolean
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expiration_date
+                  type: timestamp
+              - column:
+                  name: description
+                  type: varchar
+              - column:
+                  name: priority
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: users_tasks
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_TASKS_USERS
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: task_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_USERS_TASKS
+                    referencedTableName: tasks
+                    referencedColumnNames: id
+                    nullable: false
+        - addPrimaryKey:
+            tableName: users_tasks
+            constraintName: PK_USERS_TASKS
+            columnNames: task_id
+        - createTable:
+            tableName: users_projects
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_USERS_PROJECTS
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: project_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_PROJECTS_USERS
+                    referencedTableName: projects
+                    referencedColumnNames: id
+                    nullable: false
+        - addPrimaryKey:
+            tableName: users_projects
+            constraintName: PK_USERS_PROJECTS
+            columnNames: project_id
+        - createTable:
+            tableName: tasks_projects
+            columns:
+              - column:
+                  name: task_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_TASK_PROJECTS
+                    referencedTableName: tasks
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: project_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: FK_PROJECTS_TASK
+                    referencedTableName: projects
+                    referencedColumnNames: id
+                    nullable: false
+        - addPrimaryKey:
+            tableName: tasks_projects
+            constraintName: PK_PROJECTS_TASK
+            columnNames: project_id, task_id

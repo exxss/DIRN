@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name = "default_gen", sequenceName = "tasks_seq", allocationSize = 1)
+@SequenceGenerator(name = "default_gen", sequenceName = "tasks_id_seq", allocationSize = 1)
 @ToString
 public class Task extends GenericModel {
 

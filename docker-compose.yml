@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  app:
+    image: 'taskmanager:latest'
+    build:
+      context: .
+    container_name: taskManagerApp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=12345
+
+  db:
+    image: 'postgres:latest'
+    container_name: taskManagerDB
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
